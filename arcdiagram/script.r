@@ -12,7 +12,7 @@ color.gradient <- function(x, colors=c("#c9cba3","#ffe1a8","#e26d5c"), colsteps=
 }
 
 arcDiagram <- function(
-  edgelist, group=1, edgeweight=5, sorted=FALSE, decreasing=FALSE, lwd=NULL,
+  edgelist, edgeweight=5, edgecol=5, edgeseq=1, sorted=FALSE, decreasing=FALSE, lwd=NULL,
   col=NULL, cex=NULL, col.nodes=NULL, lend=1, ljoin=2, lmitre=1,
   las=2, bg=NULL, mar=c(4,1,3,1))
 {
@@ -34,21 +34,39 @@ arcDiagram <- function(
   # make sure edgelist is a two-col matrix
   if (!is.matrix(edgelist) || ncol(edgelist)!=2)
     stop("argument 'edgelist' must be a two column matrix")
-  edges = edgelist
+  
+  edges <- edgelist
+  print(edges)
+  #SORT EDGES
+  
+  edgecol <- as.data.frame(edgecol) %>% sapply(as.numeric)
+  edgeweight <- edgeweight %>% as.data.frame() %>% sapply(as.numeric)
+  if (length(edgeweight)==1) edgeweight = rep(edgeweight,nrow(edges))
+  if (length(edgecol)==1) edgecol = rep(edgecol,nrow(edges))
+  if (length(edgeseq)==1 & is.null(nrow(edgeseq))) edgeseq = 1:nrow(edges)
+  #colnames(edgeseq) <- 'edgeseq'
+  # edgesort <- cbind(edges,edgeseq,edgeweight,edgecol) %>% as.data.frame()
+  # edgesort <- edgesort %>%
+  #   left_join(edgesort[c('origin','edgeseq')], by = c("destination" = "origin")) %>%
+  #   rename(from = edgeseq.x, to = edgeseq.y) %>% unique()
+  # #sort
+  # edgesort <- edgesort[with(edgesort, order(from,to)),]
+  # edges <- as.matrix(edgesort[1:2])
+  # 
+  # edgeweight <- edgesort[4] %>% as.data.frame() %>% sapply(as.numeric)
+  # edgecol <- edgesort[5] %>% as.data.frame() %>% sapply(as.numeric)
+  # 
   # how many edges
   ne = nrow(edges)
   # get nodes
   nodes = unique(as.vector(edges))
-  categ <- unique(cbind(edges[,1],group))
-  names(categ) <- c("origin","line")
-  categ <- aggregate(line ~ origin,categ, paste, collapse = "/")
-  nums = seq_along(nodes)
+  nums = unique(as.vector(edgeseq))
   # how many nodes
-  nn = length(nodes)  
+  nn = length(nodes) 
   # ennumerate
   if (sorted) {
-    nodes = sort(nodes, decreasing=decreasing)
-    nums = order(nodes, decreasing=decreasing)
+    nodes = nodes[order(nums)]
+    # nums = order(nodes, decreasing=decreasing)
   }
   # check default argument values
   if (is.null(lwd)) lwd = rep(1, ne)
@@ -60,13 +78,12 @@ arcDiagram <- function(
   if (is.null(col.nodes)) col.nodes = rep("gray50", nn)
   if (length(col.nodes) != nn) col.nodes = rep(col.nodes, length=nn)
   if (is.null(bg)) bg = "white"
-  
-  edgeweight <- as.data.frame(edgeweight) %>% sapply(as.numeric)
   wd <- edgeweight
-  if (length(wd)==1) wd = rep(wd,nrow(edges))
   # scale the weight
   wd <- (wd-min(wd))/(max(wd)-min(wd))*10 +1
-  wd.col <- color.gradient(wd)
+  print("wd")
+  print(str(wd))
+  wd.col <- color.gradient(edgecol)
   # node labels coordinates
   nf = rep(1 / nn, nn)
   # node labels center coordinates
@@ -91,10 +108,8 @@ arcDiagram <- function(
   min_rad = unique(radios[min_radios] / 2)
   # arc locations
   locs = rowSums(e_num) / 2
-  #node colors
-  #cols <- 
-    # plot
-    par(mar = mar, bg = bg)
+  # plot
+  par(mar = mar, bg = bg)
   # plot.new()
   # plot.window(xlim=c(-0.025, 1.025), ylim=c(1*min_rad*2, 1*max_rad*2))
   p <- plot_ly(x=locs,
@@ -102,7 +117,7 @@ arcDiagram <- function(
                type='scatter',
                mode = 'markers',
                marker=list(size=1, opacity=0),
-               color=edgeweight, 
+               color=edgecol, 
                colors=color.gradient(c(1,2,3)),
                hoverinfo = "none")
   # plot connecting arcs
@@ -119,8 +134,11 @@ arcDiagram <- function(
     y = radio * sin(z)
     y = y + ifelse(y[[2]]>0,0.05,-0.01) #move y up/down to show label
     width <- wd[i]
+    print(width)
     color <- wd.col[i]
-    txt <- paste0(edges[i,1]," to ",edges[i,2],"\n",colnames(edgeweight),": ",format(edgeweight[i],digits = 2))
+    txt <- paste0(edges[i,1]," to ",edges[i,2],"\n",
+                  colnames(edgecol),": ",format(edgecol[i],digits = 2),"\n",
+                  colnames(edgeweight),": ",edgeweight[i])
     p <- add_trace(p,
                    x = x,
                    y = y, 
@@ -136,14 +154,14 @@ arcDiagram <- function(
   m <- list(l = 0, r = 0, b = 0, t = 0, pad = 0)
   p <- p %>%  add_text(x=centers,
                        y=0.03,
-                       text = paste0(substr(names(centers),1,5),"."),
+                       text = paste0(substr(names(centers),1,4),"."),
                        textfont = list(color = '#000000', size = 12, weight="bold")) %>% 
     add_trace(
       x = centers,
       y = 0,
       marker = list(
         color = 'rgb(255, 255, 255)',
-        size = 10,
+        size = 15,
         opacity=1,
         line = list(
           color = 'rgb(0, 0, 0)',
@@ -168,28 +186,11 @@ arcDiagram <- function(
     )
   #p
   internalSaveWidget(p, 'out.html');
-  # add node names
-  # mtext(nodes, side=1, line=0, at=centers, cex=cex,
-  #       col=col.nodes, las=las)
 }
 
-#Values <- read.csv("C:/Users/vicxjfn/OneDrive - VicGov/NIMP/Smartrack/Output/railRep.csv")
-nodes <- unique(Values[,c('origin','sequence')])
-
-edges <- Values %>% group_by(origin,destination) %>% 
-  summarise("Average Travel Time"=mean(legTime))
-
-edges <- edges %>%
-  inner_join(nodes, by = c("origin" = "origin")) %>%
-  rename(from = sequence)
-
-edges <- edges %>%
-  inner_join(nodes, by = c("destination" = "origin")) %>%
-  rename(to = sequence)
-
-#sort
-edges <- edges[with(edges, order(from,to)),]
-
-
-arcDiagram(as.matrix(edges[1:2]), edgeweight = edges[3], group = edges[4], sorted = F, lwd = 3,cex = 0.5)
-#internalSaveWidget(p, 'out.html');
+#Values <- edges
+arcDiagram(as.matrix(Values[1:2]), 
+           edgeweight = Values[3],
+           edgecol = Values[4],
+           edgeseq = as.matrix(Values[5:6]),
+           sorted = T)
