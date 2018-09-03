@@ -1,28 +1,3 @@
-/*
- *  Power BI Visual CLI
- *
- *  Copyright (c) Microsoft Corporation
- *  All rights reserved.
- *  MIT License
- *
- *  Permission is hereby granted, free of charge, to any person obtaining a copy
- *  of this software and associated documentation files (the ""Software""), to deal
- *  in the Software without restriction, including without limitation the rights
- *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- *  copies of the Software, and to permit persons to whom the Software is
- *  furnished to do so, subject to the following conditions:
- *
- *  The above copyright notice and this permission notice shall be included in
- *  all copies or substantial portions of the Software.
- *
- *  THE SOFTWARE IS PROVIDED *AS IS*, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- *  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- *  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- *  THE SOFTWARE.
- */
 module powerbi.extensibility.visual {
     "use strict";
     // below is a snippet of a definition for an object which will contain the property values
@@ -44,6 +19,9 @@ module powerbi.extensibility.visual {
     //     }
     // }
 
+    // powerbi.extensibility.utils.dataview
+    import DataViewObjectsModule = powerbi.extensibility.utils.dataview.DataViewObject;
+
     // in order to improve the performance, one can update the <head> only in the initial rendering.
     // set to 'true' if you are using different packages to create the widgets
     const updateHTMLHead: boolean = false;
@@ -53,11 +31,26 @@ module powerbi.extensibility.visual {
         VisualUpdateType.Resize + VisualUpdateType.ResizeEnd
     ];
 
+
+    //RVIZ_IN_PBI_GUIDE:BEGIN:Added to create HTML-based 
+    interface VisualSettingsCols {
+        min: string;
+        mid: string;
+        max: string;
+    }
+
+    //RVIZ_IN_PBI_GUIDE:END:Added to create HTML-based 
+
+
     export class Visual implements IVisual {
         private rootElement: HTMLElement;
         private headNodes: Node[];
         private bodyNodes: Node[];
         private settings: VisualSettings;
+
+        //RVIZ_IN_PBI_GUIDE:BEGIN:Added to create HTML-based 
+        private settings_cols: VisualSettingsCols;
+        //RVIZ_IN_PBI_GUIDE:END:Added to create HTML-based 
 
         public constructor(options: VisualConstructorOptions) {
             if (options && options.element) {
@@ -65,6 +58,17 @@ module powerbi.extensibility.visual {
             }
             this.headNodes = [];
             this.bodyNodes = [];
+
+            //RVIZ_IN_PBI_GUIDE:BEGIN:Added to create HTML-based 
+            this.settings_cols = <VisualSettingsCols>{
+
+                min: "grey",
+                max: "orange"
+            };
+            //RVIZ_IN_PBI_GUIDE:END:Added to create HTML-based 
+
+
+
         }
 
         public update(options: VisualUpdateOptions): void {
@@ -79,7 +83,9 @@ module powerbi.extensibility.visual {
             }
             const dataView: DataView = options.dataViews[0];
             this.settings = Visual.parseSettings(dataView);
-
+            //RVIZ_IN_PBI_GUIDE:BEGIN:Added to create HTML-based 
+            this.updateObjects(dataView.metadata.objects);
+            //RVIZ_IN_PBI_GUIDE:END:Added to create HTML-based 
             let payloadBase64: string = null;
             if (dataView.scriptResult && dataView.scriptResult.payloadBase64) {
                 payloadBase64 = dataView.scriptResult.payloadBase64;
@@ -149,6 +155,28 @@ module powerbi.extensibility.visual {
             return VisualSettings.parse(dataView) as VisualSettings;
         }
 
+
+
+        //RVIZ_IN_PBI_GUIDE:BEGIN:Added to create HTML-based 
+        /**
+         * This function gets called by the update function above. You should read the new values of the properties into 
+         * your settings object so you can use the new value in the enumerateObjectInstances function below.
+         * 
+         * Below is a code snippet demonstrating how to expose a single property called "lineColor" from the object called "settings"
+         * This object and property should be first defined in the capabilities.json file in the objects section.
+         * In this code we get the property value from the objects (and have a default value in case the property is undefined)
+         */
+        public updateObjects(objects: DataViewObjects) {
+
+            this.settings_cols = <VisualSettingsCols>{
+                min: DataViewObjectsModule.getValue<string>(objects, 'min', this.settings_cols.min),
+                max: DataViewObjectsModule.getValue<string>(objects, 'max', this.settings_cols.max)
+            };
+        }
+        //RVIZ_IN_PBI_GUIDE:END:Added to create HTML-based 
+
+
+
         /** 
          * This function gets called for each of the objects defined in the capabilities files and allows you to select which of the 
          * objects and properties you want to expose to the users in the property pane.
@@ -156,7 +184,30 @@ module powerbi.extensibility.visual {
          */
         public enumerateObjectInstances(options: EnumerateVisualObjectInstancesOptions):
             VisualObjectInstance[] | VisualObjectInstanceEnumerationObject {
-            return VisualSettings.enumerateObjectInstances(this.settings || VisualSettings.getDefault(), options);
+            //RVIZ_IN_PBI_GUIDE:BEGIN:Added to create HTML-based 
+            let objectName = options.objectName;
+            let objectEnumeration = [];
+
+            switch (objectName) {
+
+
+                case 'settings_cols':
+                    objectEnumeration.push({
+                        objectName: objectName,
+                        properties: {
+                            min: this.settings_cols.min,
+                            max: this.settings_cols.max
+                        },
+                        selector: null
+                    });
+                    break;
+
+            };
+
+
+            //RVIZ_IN_PBI_GUIDE:END:Added to create HTML-based 
+
+            return objectEnumeration;
         }
     }
 }

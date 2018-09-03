@@ -56,6 +56,34 @@
           }
         }
       }
+    },
+    "settings_cols": {
+      "displayName": "Color Picker",
+      "description": "Select Gradient Colors",
+      "properties":{
+        "min":{
+          "displayName":"Minimum color",
+          "description":"Minimum color",
+          "type":{
+            "fill":{
+              "solid":{
+                "color": true
+              }
+            }
+          }
+        },
+        "max":{
+          "displayName":"Maximum color",
+          "description":"Maximum color",
+          "type":{
+            "fill":{
+              "solid":{
+                "color": true
+              }
+            }
+          }
+        }
+      }
     }
   },
   "suppressDefaultTitle": true

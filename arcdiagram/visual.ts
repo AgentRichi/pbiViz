@@ -1,4 +1,4 @@
-module powerbi.extensibility.visual.sampleRHTMLVisual3AE23BF6D2F64FC8B1ACABEBAD0FAE26  {
+module powerbi.extensibility.visual {
     "use strict";
     // below is a snippet of a definition for an object which will contain the property values
     // selected by the users
@@ -33,12 +33,25 @@ module powerbi.extensibility.visual.sampleRHTMLVisual3AE23BF6D2F64FC8B1ACABEBAD0
 
 
     //RVIZ_IN_PBI_GUIDE:BEGIN:Added to create HTML-based 
-    interface VisualSettingsCols {
-        min: string;
-        mid: string;
-        max: string;
+    interface VisualSettingsSplineParams {
+        lineColor: string;
+        conf1: string;
+        conf2: string;
     }
 
+    interface VisualSettingsPointParams {
+        pointColor: string;
+        weight: number;
+    }
+
+    interface VisualSettingsAxesParams {
+        colLabel: string;
+        textSize: number;
+        scaleXformat: string;
+        scaleYformat: string;
+        sizeTicks: string;
+        axisXisPercentage: boolean;
+    }
     //RVIZ_IN_PBI_GUIDE:END:Added to create HTML-based 
 
 
@@ -49,7 +62,9 @@ module powerbi.extensibility.visual.sampleRHTMLVisual3AE23BF6D2F64FC8B1ACABEBAD0
         private settings: VisualSettings;
 
         //RVIZ_IN_PBI_GUIDE:BEGIN:Added to create HTML-based 
-        private settings_cols: VisualSettingsCols;
+        private settings_funnel: VisualSettingsSplineParams;
+        private settings_point: VisualSettingsPointParams;
+        private settings_axes: VisualSettingsAxesParams;
         //RVIZ_IN_PBI_GUIDE:END:Added to create HTML-based 
 
         public constructor(options: VisualConstructorOptions) {
@@ -60,10 +75,25 @@ module powerbi.extensibility.visual.sampleRHTMLVisual3AE23BF6D2F64FC8B1ACABEBAD0
             this.bodyNodes = [];
 
             //RVIZ_IN_PBI_GUIDE:BEGIN:Added to create HTML-based 
-            this.settings_cols = <VisualSettingsCols>{
+            this.settings_funnel = <VisualSettingsSplineParams>{
 
-                min: "grey",
-                max: "orange"
+                lineColor: "blue",
+                conf1: "0.95",
+                conf2: "0.999"
+            };
+
+            this.settings_point = <VisualSettingsPointParams>{
+                pointColor: "orange",
+                weight: 1
+            };
+
+            this.settings_axes = <VisualSettingsAxesParams>{
+                colLabel: "gray",
+                textSize: 12,
+                scaleXformat: "comma",
+                scaleYformat: "none",
+                sizeTicks: "8",
+                axisXisPercentage: true
             };
             //RVIZ_IN_PBI_GUIDE:END:Added to create HTML-based 
 
@@ -168,10 +198,30 @@ module powerbi.extensibility.visual.sampleRHTMLVisual3AE23BF6D2F64FC8B1ACABEBAD0
          */
         public updateObjects(objects: DataViewObjects) {
 
-            this.settings_cols = <VisualSettingsCols>{
-                min: DataViewObjectsModule.getValue<string>(objects, 'min', this.settings_cols.min),
-                max: DataViewObjectsModule.getValue<string>(objects, 'max', this.settings_cols.max)
+            this.settings_funnel = <VisualSettingsSplineParams>{
+                lineColor: DataViewObjectsModule.getValue<string>(objects, 'lineColor', 'blue'),
+                conf1: DataViewObjectsModule.getValue<string>(objects, 'conf1', "0.95"),
+                conf2: DataViewObjectsModule.getValue<string>(objects, 'conf2', "0.999")
             };
+
+            this.settings_point = <VisualSettingsPointParams>{
+
+                pointColor: DataViewObjectsModule.getValue<string>(objects, 'pointColor', 'orange'),
+                weight: DataViewObjectsModule.getValue<number>(objects, 'weight', 1)
+            };
+
+
+            this.settings_axes = <VisualSettingsAxesParams>{
+
+
+                colLabel: DataViewObjectsModule.getValue<string>(objects, 'colLabel', "gray"),
+                textSize: DataViewObjectsModule.getValue<number>(objects, 'textSize', 12),
+                scaleXformat: DataViewObjectsModule.getValue<string>(objects, 'scaleXformat', "comma"),
+                scaleYformat: DataViewObjectsModule.getValue<string>(objects, 'scaleYformat', "none"),
+                sizeTicks: DataViewObjectsModule.getValue<string>(objects, 'sizeTicks', "8"),
+                axisXisPercentage: DataViewObjectsModule.getValue<boolean>(objects, 'axisXisPercentage', true)
+            };
+
         }
         //RVIZ_IN_PBI_GUIDE:END:Added to create HTML-based 
 
@@ -191,12 +241,12 @@ module powerbi.extensibility.visual.sampleRHTMLVisual3AE23BF6D2F64FC8B1ACABEBAD0
             switch (objectName) {
 
 
-                case 'settings_cols':
+                case 'settings_point_params':
                     objectEnumeration.push({
                         objectName: objectName,
                         properties: {
-                            min: this.settings_cols.min,
-                            max: this.settings_cols.max
+                            pointColor: this.settings_point.pointColor,
+                            weight: this.settings_point.weight
                         },
                         selector: null
                     });

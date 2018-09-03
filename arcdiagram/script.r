@@ -12,7 +12,7 @@ color.gradient <- function(x, colors=c("#c9cba3","#ffe1a8","#e26d5c"), colsteps=
 }
 
 arcDiagram <- function(
-  edgelist, edgeweight=5, edgecol=5, edgeseq=1, sorted=FALSE, decreasing=FALSE, lwd=NULL,
+  edgelist, edgeweight=5, edgecol=5, edgeseq=1, cols=c("#c9cba3","#ffe1a8","#e26d5c"), sorted=FALSE, decreasing=FALSE, lwd=NULL,
   col=NULL, cex=NULL, col.nodes=NULL, lend=1, ljoin=2, lmitre=1,
   las=2, bg=NULL, mar=c(4,1,3,1))
 {
@@ -83,7 +83,7 @@ arcDiagram <- function(
   wd <- (wd-min(wd))/(max(wd)-min(wd))*10 +1
   print("wd")
   print(str(wd))
-  wd.col <- color.gradient(edgecol)
+  wd.col <- color.gradient(edgecol,colors = cols)
   # node labels coordinates
   nf = rep(1 / nn, nn)
   # node labels center coordinates
@@ -118,8 +118,11 @@ arcDiagram <- function(
                mode = 'markers',
                marker=list(size=1, opacity=0),
                color=edgecol, 
-               colors=color.gradient(c(1,2,3)),
+               colors=color.gradient(1:length(cols),colors = cols),
                hoverinfo = "none")
+  print("cols")
+  print(cols)
+  print(color.gradient(1:length(cols),colors = cols))
   # plot connecting arcs
   z = seq(0, pi, l=100)
   for (i in 1:nrow(edges))
@@ -189,8 +192,12 @@ arcDiagram <- function(
 }
 
 #Values <- edges
+if (!exists("settings_cols_min")) {settings_cols_min = "gray";}
+if (!exists("settings_cols_max")) {settings_cols_max = "orange";}
+
 arcDiagram(as.matrix(Values[1:2]), 
            edgeweight = Values[3],
            edgecol = Values[4],
            edgeseq = as.matrix(Values[5:6]),
+           cols = c(settings_cols_min,settings_cols_max),
            sorted = T)

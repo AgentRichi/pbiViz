@@ -1,4 +1,4 @@
-module powerbi.extensibility.visual.arcdiagramDFB7F890CC9043849CE0F75D2F5701FE  {
+module powerbi.extensibility.visual.sampleRHTMLVisual3AE23BF6D2F64FC8B1ACABEBAD0FAE26  {
   "use strict";
   let injectorCounter: number = 0;
   export function ResetInjector(): void {

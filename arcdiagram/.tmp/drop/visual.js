@@ -517,18 +517,18 @@ var powerbi;
     (function (extensibility) {
         var visual;
         (function (visual) {
-            var arcdiagramDFB7F890CC9043849CE0F75D2F5701FE;
-            (function (arcdiagramDFB7F890CC9043849CE0F75D2F5701FE) {
+            var sampleRHTMLVisual3AE23BF6D2F64FC8B1ACABEBAD0FAE26;
+            (function (sampleRHTMLVisual3AE23BF6D2F64FC8B1ACABEBAD0FAE26) {
                 "use strict";
                 var injectorCounter = 0;
                 function ResetInjector() {
                     injectorCounter = 0;
                 }
-                arcdiagramDFB7F890CC9043849CE0F75D2F5701FE.ResetInjector = ResetInjector;
+                sampleRHTMLVisual3AE23BF6D2F64FC8B1ACABEBAD0FAE26.ResetInjector = ResetInjector;
                 function injectorReady() {
                     return injectorCounter === 0;
                 }
-                arcdiagramDFB7F890CC9043849CE0F75D2F5701FE.injectorReady = injectorReady;
+                sampleRHTMLVisual3AE23BF6D2F64FC8B1ACABEBAD0FAE26.injectorReady = injectorReady;
                 function ParseElement(el, target) {
                     var arr = [];
                     if (!el || !el.hasChildNodes()) {
@@ -548,7 +548,7 @@ var powerbi;
                     }
                     return arr;
                 }
-                arcdiagramDFB7F890CC9043849CE0F75D2F5701FE.ParseElement = ParseElement;
+                sampleRHTMLVisual3AE23BF6D2F64FC8B1ACABEBAD0FAE26.ParseElement = ParseElement;
                 function createScriptNode(refNode) {
                     var script = document.createElement("script");
                     var attr = refNode.attributes;
@@ -577,8 +577,8 @@ var powerbi;
                         }
                     }, 100);
                 }
-                arcdiagramDFB7F890CC9043849CE0F75D2F5701FE.RunHTMLWidgetRenderer = RunHTMLWidgetRenderer;
-            })(arcdiagramDFB7F890CC9043849CE0F75D2F5701FE = visual.arcdiagramDFB7F890CC9043849CE0F75D2F5701FE || (visual.arcdiagramDFB7F890CC9043849CE0F75D2F5701FE = {}));
+                sampleRHTMLVisual3AE23BF6D2F64FC8B1ACABEBAD0FAE26.RunHTMLWidgetRenderer = RunHTMLWidgetRenderer;
+            })(sampleRHTMLVisual3AE23BF6D2F64FC8B1ACABEBAD0FAE26 = visual.sampleRHTMLVisual3AE23BF6D2F64FC8B1ACABEBAD0FAE26 || (visual.sampleRHTMLVisual3AE23BF6D2F64FC8B1ACABEBAD0FAE26 = {}));
         })(visual = extensibility.visual || (extensibility.visual = {}));
     })(extensibility = powerbi.extensibility || (powerbi.extensibility = {}));
 })(powerbi || (powerbi = {}));
@@ -613,8 +613,8 @@ var powerbi;
     (function (extensibility) {
         var visual;
         (function (visual) {
-            var arcdiagramDFB7F890CC9043849CE0F75D2F5701FE;
-            (function (arcdiagramDFB7F890CC9043849CE0F75D2F5701FE) {
+            var sampleRHTMLVisual3AE23BF6D2F64FC8B1ACABEBAD0FAE26;
+            (function (sampleRHTMLVisual3AE23BF6D2F64FC8B1ACABEBAD0FAE26) {
                 "use strict";
                 var DataViewObjectsParser = powerbi.extensibility.utils.dataview.DataViewObjectsParser;
                 var VisualSettings = (function (_super) {
@@ -626,50 +626,25 @@ var powerbi;
                     }
                     return VisualSettings;
                 }(DataViewObjectsParser));
-                arcdiagramDFB7F890CC9043849CE0F75D2F5701FE.VisualSettings = VisualSettings;
+                sampleRHTMLVisual3AE23BF6D2F64FC8B1ACABEBAD0FAE26.VisualSettings = VisualSettings;
                 var rcv_scriptSettings = (function () {
                     function rcv_scriptSettings() {
                     }
                     return rcv_scriptSettings;
                 }());
-                arcdiagramDFB7F890CC9043849CE0F75D2F5701FE.rcv_scriptSettings = rcv_scriptSettings;
-            })(arcdiagramDFB7F890CC9043849CE0F75D2F5701FE = visual.arcdiagramDFB7F890CC9043849CE0F75D2F5701FE || (visual.arcdiagramDFB7F890CC9043849CE0F75D2F5701FE = {}));
+                sampleRHTMLVisual3AE23BF6D2F64FC8B1ACABEBAD0FAE26.rcv_scriptSettings = rcv_scriptSettings;
+            })(sampleRHTMLVisual3AE23BF6D2F64FC8B1ACABEBAD0FAE26 = visual.sampleRHTMLVisual3AE23BF6D2F64FC8B1ACABEBAD0FAE26 || (visual.sampleRHTMLVisual3AE23BF6D2F64FC8B1ACABEBAD0FAE26 = {}));
         })(visual = extensibility.visual || (extensibility.visual = {}));
     })(extensibility = powerbi.extensibility || (powerbi.extensibility = {}));
 })(powerbi || (powerbi = {}));
-/*
- *  Power BI Visual CLI
- *
- *  Copyright (c) Microsoft Corporation
- *  All rights reserved.
- *  MIT License
- *
- *  Permission is hereby granted, free of charge, to any person obtaining a copy
- *  of this software and associated documentation files (the ""Software""), to deal
- *  in the Software without restriction, including without limitation the rights
- *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- *  copies of the Software, and to permit persons to whom the Software is
- *  furnished to do so, subject to the following conditions:
- *
- *  The above copyright notice and this permission notice shall be included in
- *  all copies or substantial portions of the Software.
- *
- *  THE SOFTWARE IS PROVIDED *AS IS*, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- *  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- *  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- *  THE SOFTWARE.
- */
 var powerbi;
 (function (powerbi) {
     var extensibility;
     (function (extensibility) {
         var visual;
         (function (visual) {
-            var arcdiagramDFB7F890CC9043849CE0F75D2F5701FE;
-            (function (arcdiagramDFB7F890CC9043849CE0F75D2F5701FE) {
+            var sampleRHTMLVisual3AE23BF6D2F64FC8B1ACABEBAD0FAE26;
+            (function (sampleRHTMLVisual3AE23BF6D2F64FC8B1ACABEBAD0FAE26) {
                 "use strict";
                 // below is a snippet of a definition for an object which will contain the property values
                 // selected by the users
@@ -688,6 +663,8 @@ var powerbi;
                 //         }
                 //     }
                 // }
+                // powerbi.extensibility.utils.dataview
+                var DataViewObjectsModule = powerbi.extensibility.utils.dataview.DataViewObject;
                 // in order to improve the performance, one can update the <head> only in the initial rendering.
                 // set to 'true' if you are using different packages to create the widgets
                 var updateHTMLHead = false;
@@ -696,13 +673,21 @@ var powerbi;
                     powerbi.VisualUpdateType.ResizeEnd,
                     powerbi.VisualUpdateType.Resize + powerbi.VisualUpdateType.ResizeEnd
                 ];
+                //RVIZ_IN_PBI_GUIDE:END:Added to create HTML-based 
                 var Visual = (function () {
+                    //RVIZ_IN_PBI_GUIDE:END:Added to create HTML-based 
                     function Visual(options) {
                         if (options && options.element) {
                             this.rootElement = options.element;
                         }
                         this.headNodes = [];
                         this.bodyNodes = [];
+                        //RVIZ_IN_PBI_GUIDE:BEGIN:Added to create HTML-based 
+                        this.settings_cols = {
+                            min: "grey",
+                            max: "orange"
+                        };
+                        //RVIZ_IN_PBI_GUIDE:END:Added to create HTML-based 
                     }
                     Visual.prototype.update = function (options) {
                         if (!options ||
@@ -715,6 +700,9 @@ var powerbi;
                         }
                         var dataView = options.dataViews[0];
                         this.settings = Visual.parseSettings(dataView);
+                        //RVIZ_IN_PBI_GUIDE:BEGIN:Added to create HTML-based 
+                        this.updateObjects(dataView.metadata.objects);
+                        //RVIZ_IN_PBI_GUIDE:END:Added to create HTML-based 
                         var payloadBase64 = null;
                         if (dataView.scriptResult && dataView.scriptResult.payloadBase64) {
                             payloadBase64 = dataView.scriptResult.payloadBase64;
@@ -735,7 +723,7 @@ var powerbi;
                         // inject HTML from payload, created in R
                         // the code is injected to the 'head' and 'body' sections.
                         // if the visual was already rendered, the previous DOM elements are cleared
-                        arcdiagramDFB7F890CC9043849CE0F75D2F5701FE.ResetInjector();
+                        sampleRHTMLVisual3AE23BF6D2F64FC8B1ACABEBAD0FAE26.ResetInjector();
                         if (!payloadBase64) {
                             return;
                         }
@@ -757,7 +745,7 @@ var powerbi;
                             var headList = el.getElementsByTagName("head");
                             if (headList && headList.length > 0) {
                                 var head = headList[0];
-                                this.headNodes = arcdiagramDFB7F890CC9043849CE0F75D2F5701FE.ParseElement(head, document.head);
+                                this.headNodes = sampleRHTMLVisual3AE23BF6D2F64FC8B1ACABEBAD0FAE26.ParseElement(head, document.head);
                             }
                         }
                         // update 'body' nodes, under the rootElement
@@ -768,25 +756,58 @@ var powerbi;
                         var bodyList = el.getElementsByTagName("body");
                         if (bodyList && bodyList.length > 0) {
                             var body = bodyList[0];
-                            this.bodyNodes = arcdiagramDFB7F890CC9043849CE0F75D2F5701FE.ParseElement(body, this.rootElement);
+                            this.bodyNodes = sampleRHTMLVisual3AE23BF6D2F64FC8B1ACABEBAD0FAE26.ParseElement(body, this.rootElement);
                         }
-                        arcdiagramDFB7F890CC9043849CE0F75D2F5701FE.RunHTMLWidgetRenderer();
+                        sampleRHTMLVisual3AE23BF6D2F64FC8B1ACABEBAD0FAE26.RunHTMLWidgetRenderer();
                     };
                     Visual.parseSettings = function (dataView) {
-                        return arcdiagramDFB7F890CC9043849CE0F75D2F5701FE.VisualSettings.parse(dataView);
+                        return sampleRHTMLVisual3AE23BF6D2F64FC8B1ACABEBAD0FAE26.VisualSettings.parse(dataView);
                     };
+                    //RVIZ_IN_PBI_GUIDE:BEGIN:Added to create HTML-based 
+                    /**
+                     * This function gets called by the update function above. You should read the new values of the properties into
+                     * your settings object so you can use the new value in the enumerateObjectInstances function below.
+                     *
+                     * Below is a code snippet demonstrating how to expose a single property called "lineColor" from the object called "settings"
+                     * This object and property should be first defined in the capabilities.json file in the objects section.
+                     * In this code we get the property value from the objects (and have a default value in case the property is undefined)
+                     */
+                    Visual.prototype.updateObjects = function (objects) {
+                        this.settings_cols = {
+                            min: DataViewObjectsModule.getValue(objects, 'min', this.settings_cols.min),
+                            max: DataViewObjectsModule.getValue(objects, 'max', this.settings_cols.max)
+                        };
+                    };
+                    //RVIZ_IN_PBI_GUIDE:END:Added to create HTML-based 
                     /**
                      * This function gets called for each of the objects defined in the capabilities files and allows you to select which of the
                      * objects and properties you want to expose to the users in the property pane.
                      *
                      */
                     Visual.prototype.enumerateObjectInstances = function (options) {
-                        return arcdiagramDFB7F890CC9043849CE0F75D2F5701FE.VisualSettings.enumerateObjectInstances(this.settings || arcdiagramDFB7F890CC9043849CE0F75D2F5701FE.VisualSettings.getDefault(), options);
+                        //RVIZ_IN_PBI_GUIDE:BEGIN:Added to create HTML-based 
+                        var objectName = options.objectName;
+                        var objectEnumeration = [];
+                        switch (objectName) {
+                            case 'settings_cols':
+                                objectEnumeration.push({
+                                    objectName: objectName,
+                                    properties: {
+                                        min: this.settings_cols.min,
+                                        max: this.settings_cols.max
+                                    },
+                                    selector: null
+                                });
+                                break;
+                        }
+                        ;
+                        //RVIZ_IN_PBI_GUIDE:END:Added to create HTML-based 
+                        return objectEnumeration;
                     };
                     return Visual;
                 }());
-                arcdiagramDFB7F890CC9043849CE0F75D2F5701FE.Visual = Visual;
-            })(arcdiagramDFB7F890CC9043849CE0F75D2F5701FE = visual.arcdiagramDFB7F890CC9043849CE0F75D2F5701FE || (visual.arcdiagramDFB7F890CC9043849CE0F75D2F5701FE = {}));
+                sampleRHTMLVisual3AE23BF6D2F64FC8B1ACABEBAD0FAE26.Visual = Visual;
+            })(sampleRHTMLVisual3AE23BF6D2F64FC8B1ACABEBAD0FAE26 = visual.sampleRHTMLVisual3AE23BF6D2F64FC8B1ACABEBAD0FAE26 || (visual.sampleRHTMLVisual3AE23BF6D2F64FC8B1ACABEBAD0FAE26 = {}));
         })(visual = extensibility.visual || (extensibility.visual = {}));
     })(extensibility = powerbi.extensibility || (powerbi.extensibility = {}));
 })(powerbi || (powerbi = {}));
@@ -796,13 +817,13 @@ var powerbi;
     (function (visuals) {
         var plugins;
         (function (plugins) {
-            plugins.arcdiagramDFB7F890CC9043849CE0F75D2F5701FE = {
-                name: 'arcdiagramDFB7F890CC9043849CE0F75D2F5701FE',
-                displayName: 'arcdiagram',
+            plugins.sampleRHTMLVisual3AE23BF6D2F64FC8B1ACABEBAD0FAE26 = {
+                name: 'sampleRHTMLVisual3AE23BF6D2F64FC8B1ACABEBAD0FAE26',
+                displayName: 'sampleRHTMLVisual',
                 class: 'Visual',
                 version: '1.0.0',
                 apiVersion: '1.13.0',
-                create: function (options) { return new powerbi.extensibility.visual.arcdiagramDFB7F890CC9043849CE0F75D2F5701FE.Visual(options); },
+                create: function (options) { return new powerbi.extensibility.visual.sampleRHTMLVisual3AE23BF6D2F64FC8B1ACABEBAD0FAE26.Visual(options); },
                 custom: true
             };
         })(plugins = visuals.plugins || (visuals.plugins = {}));
