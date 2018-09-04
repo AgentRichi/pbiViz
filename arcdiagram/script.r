@@ -194,6 +194,10 @@ arcDiagram <- function(
 #Values <- edges
 if (!exists("settings_cols_min")) {settings_cols_min = "gray";}
 if (!exists("settings_cols_max")) {settings_cols_max = "orange";}
+if (!exists("settings_cols_max") && !exists("settings_cols_min")) {
+  settings_cols_max = "#253494";
+  settings_cols_min = c("#a1dab4","#41b6c4","#2c7fb8");
+}
 
 arcDiagram(as.matrix(Values[1:2]), 
            edgeweight = Values[3],
