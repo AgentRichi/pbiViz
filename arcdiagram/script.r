@@ -141,7 +141,7 @@ arcDiagram <- function(
     color <- wd.col[i]
     txt <- paste0(edges[i,1]," to ",edges[i,2],"\n",
                   colnames(edgecol),": ",format(edgecol[i],digits = 2),"\n",
-                  colnames(edgeweight),": ",edgeweight[i])
+                  colnames(edgeweight),": ",format(edgeweight[i],digits = 2))
     p <- add_trace(p,
                    x = x,
                    y = y, 
@@ -192,16 +192,26 @@ arcDiagram <- function(
 }
 
 #Values <- edges
-if (!exists("settings_cols_min")) {settings_cols_min = "gray";}
-if (!exists("settings_cols_max")) {settings_cols_max = "orange";}
-if (!exists("settings_cols_max") && !exists("settings_cols_min")) {
-  settings_cols_max = "#253494";
-  settings_cols_min = c("#a1dab4","#41b6c4","#2c7fb8");
-}
+
+#create default variables
+if (!exists("settings_cols_numCols")) {settings_cols_numCols = "5";}
+if (!exists("settings_cols_col1")) {settings_cols_col1 = "#c7e9b4";}
+if (!exists("settings_cols_col2")) {settings_cols_col2 = "#7fcdbb";}
+if (!exists("settings_cols_col3")) {settings_cols_col3 = "#41b6c4";}
+if (!exists("settings_cols_col4")) {settings_cols_col4 = "#2c7fb8";}
+if (!exists("settings_cols_col5")) {settings_cols_col5 = "#253494";}
+
+numCols <- as.numeric(settings_cols_numCols)
+
+cols <- c(settings_cols_col1,settings_cols_col2,
+          settings_cols_col3,settings_cols_col4,
+          settings_cols_col5)
+
+cols <- cols[1:numCols]
 
 arcDiagram(as.matrix(Values[1:2]), 
            edgeweight = Values[3],
            edgecol = Values[4],
            edgeseq = as.matrix(Values[5:6]),
-           cols = c(settings_cols_min,settings_cols_max),
+           cols = cols,
            sorted = T)

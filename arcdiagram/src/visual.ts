@@ -34,9 +34,12 @@ module powerbi.extensibility.visual {
 
     //RVIZ_IN_PBI_GUIDE:BEGIN:Added to create HTML-based 
     interface VisualSettingsCols {
-        min: string;
-        mid: string;
-        max: string;
+        numCols: string;
+        col1: string;
+        col2: string;
+        col3: string;
+        col4: string;
+        col5: string;
     }
 
     //RVIZ_IN_PBI_GUIDE:END:Added to create HTML-based 
@@ -61,9 +64,12 @@ module powerbi.extensibility.visual {
 
             //RVIZ_IN_PBI_GUIDE:BEGIN:Added to create HTML-based 
             this.settings_cols = <VisualSettingsCols>{
-
-                min: "grey",
-                max: "orange"
+                numCols: "5",
+                col1: "#c7e9b4",
+                col2: "#7fcdbb",
+                col3: "#41b6c4",
+                col4: "#2c7fb8",
+                col5: "#253494"
             };
             //RVIZ_IN_PBI_GUIDE:END:Added to create HTML-based 
 
@@ -169,8 +175,12 @@ module powerbi.extensibility.visual {
         public updateObjects(objects: DataViewObjects) {
 
             this.settings_cols = <VisualSettingsCols>{
-                min: DataViewObjectsModule.getValue<string>(objects, 'min', this.settings_cols.min),
-                max: DataViewObjectsModule.getValue<string>(objects, 'max', this.settings_cols.max)
+                numCols: DataViewObjectsModule.getValue<string>(objects, 'numCols', this.settings_cols.numCols),
+                col1: DataViewObjectsModule.getValue<string>(objects, 'col1', this.settings_cols.col1),
+                col2: DataViewObjectsModule.getValue<string>(objects, 'col2', this.settings_cols.col2),
+                col3: DataViewObjectsModule.getValue<string>(objects, 'col3', this.settings_cols.col3),
+                col4: DataViewObjectsModule.getValue<string>(objects, 'col4', this.settings_cols.col4),
+                col5: DataViewObjectsModule.getValue<string>(objects, 'col5', this.settings_cols.col5)
             };
         }
         //RVIZ_IN_PBI_GUIDE:END:Added to create HTML-based 
@@ -195,8 +205,12 @@ module powerbi.extensibility.visual {
                     objectEnumeration.push({
                         objectName: objectName,
                         properties: {
-                            min: this.settings_cols.min,
-                            max: this.settings_cols.max
+                            numCols: this.settings_cols.numCols,
+                            col1: this.settings_cols.col1,
+                            col2: this.settings_cols.col2,
+                            col3: this.settings_cols.col3,
+                            col4: this.settings_cols.col4,
+                            col5: this.settings_cols.col5
                         },
                         selector: null
                     });

@@ -61,8 +61,36 @@
       "displayName": "Color Picker",
       "description": "Select Gradient Colors",
       "properties":{
-        "min":{
-          "displayName":"Minimum color",
+        "numCols": {
+          "displayName": "Number of Colors",
+          "description": "Choose to only use the first n colors",
+          "type": {
+            "enumeration": [
+              {
+                "displayName": "1",
+                "value": "1"
+              },
+              {
+                "displayName": "2",
+                "value": "2"
+              },
+              {
+                "displayName": "3",
+                "value": "3"
+              },
+              {
+                "displayName": "4",
+                "value": "4"
+              },
+              {
+                "displayName": "5",
+                "value": "5"
+              }
+            ]
+          }
+        },
+        "col1":{
+          "displayName":"Color 1",
           "description":"Minimum color",
           "type":{
             "fill":{
@@ -72,8 +100,41 @@
             }
           }
         },
-        "max":{
-          "displayName":"Maximum color",
+        "col2":{
+          "displayName":"Color 2",
+          "description":"Color 2",
+          "type":{
+            "fill":{
+              "solid":{
+                "color": true
+              }
+            }
+          }
+        },
+        "col3":{
+          "displayName":"Color 3",
+          "description":"Color 3",
+          "type":{
+            "fill":{
+              "solid":{
+                "color": true
+              }
+            }
+          }
+        },
+        "col4":{
+          "displayName":"Color 4",
+          "description":"Color 4",
+          "type":{
+            "fill":{
+              "solid":{
+                "color": true
+              }
+            }
+          }
+        },
+        "col5":{
+          "displayName":"Color 5",
           "description":"Maximum color",
           "type":{
             "fill":{

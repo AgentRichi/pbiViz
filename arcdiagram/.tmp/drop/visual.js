@@ -517,18 +517,18 @@ var powerbi;
     (function (extensibility) {
         var visual;
         (function (visual) {
-            var sampleRHTMLVisual3AE23BF6D2F64FC8B1ACABEBAD0FAE26;
-            (function (sampleRHTMLVisual3AE23BF6D2F64FC8B1ACABEBAD0FAE26) {
+            var arcDiagram3AE23BF6D2F64FC8B1ACABEBAD0FAE26;
+            (function (arcDiagram3AE23BF6D2F64FC8B1ACABEBAD0FAE26) {
                 "use strict";
                 var injectorCounter = 0;
                 function ResetInjector() {
                     injectorCounter = 0;
                 }
-                sampleRHTMLVisual3AE23BF6D2F64FC8B1ACABEBAD0FAE26.ResetInjector = ResetInjector;
+                arcDiagram3AE23BF6D2F64FC8B1ACABEBAD0FAE26.ResetInjector = ResetInjector;
                 function injectorReady() {
                     return injectorCounter === 0;
                 }
-                sampleRHTMLVisual3AE23BF6D2F64FC8B1ACABEBAD0FAE26.injectorReady = injectorReady;
+                arcDiagram3AE23BF6D2F64FC8B1ACABEBAD0FAE26.injectorReady = injectorReady;
                 function ParseElement(el, target) {
                     var arr = [];
                     if (!el || !el.hasChildNodes()) {
@@ -548,7 +548,7 @@ var powerbi;
                     }
                     return arr;
                 }
-                sampleRHTMLVisual3AE23BF6D2F64FC8B1ACABEBAD0FAE26.ParseElement = ParseElement;
+                arcDiagram3AE23BF6D2F64FC8B1ACABEBAD0FAE26.ParseElement = ParseElement;
                 function createScriptNode(refNode) {
                     var script = document.createElement("script");
                     var attr = refNode.attributes;
@@ -577,8 +577,8 @@ var powerbi;
                         }
                     }, 100);
                 }
-                sampleRHTMLVisual3AE23BF6D2F64FC8B1ACABEBAD0FAE26.RunHTMLWidgetRenderer = RunHTMLWidgetRenderer;
-            })(sampleRHTMLVisual3AE23BF6D2F64FC8B1ACABEBAD0FAE26 = visual.sampleRHTMLVisual3AE23BF6D2F64FC8B1ACABEBAD0FAE26 || (visual.sampleRHTMLVisual3AE23BF6D2F64FC8B1ACABEBAD0FAE26 = {}));
+                arcDiagram3AE23BF6D2F64FC8B1ACABEBAD0FAE26.RunHTMLWidgetRenderer = RunHTMLWidgetRenderer;
+            })(arcDiagram3AE23BF6D2F64FC8B1ACABEBAD0FAE26 = visual.arcDiagram3AE23BF6D2F64FC8B1ACABEBAD0FAE26 || (visual.arcDiagram3AE23BF6D2F64FC8B1ACABEBAD0FAE26 = {}));
         })(visual = extensibility.visual || (extensibility.visual = {}));
     })(extensibility = powerbi.extensibility || (powerbi.extensibility = {}));
 })(powerbi || (powerbi = {}));
@@ -613,8 +613,8 @@ var powerbi;
     (function (extensibility) {
         var visual;
         (function (visual) {
-            var sampleRHTMLVisual3AE23BF6D2F64FC8B1ACABEBAD0FAE26;
-            (function (sampleRHTMLVisual3AE23BF6D2F64FC8B1ACABEBAD0FAE26) {
+            var arcDiagram3AE23BF6D2F64FC8B1ACABEBAD0FAE26;
+            (function (arcDiagram3AE23BF6D2F64FC8B1ACABEBAD0FAE26) {
                 "use strict";
                 var DataViewObjectsParser = powerbi.extensibility.utils.dataview.DataViewObjectsParser;
                 var VisualSettings = (function (_super) {
@@ -626,14 +626,14 @@ var powerbi;
                     }
                     return VisualSettings;
                 }(DataViewObjectsParser));
-                sampleRHTMLVisual3AE23BF6D2F64FC8B1ACABEBAD0FAE26.VisualSettings = VisualSettings;
+                arcDiagram3AE23BF6D2F64FC8B1ACABEBAD0FAE26.VisualSettings = VisualSettings;
                 var rcv_scriptSettings = (function () {
                     function rcv_scriptSettings() {
                     }
                     return rcv_scriptSettings;
                 }());
-                sampleRHTMLVisual3AE23BF6D2F64FC8B1ACABEBAD0FAE26.rcv_scriptSettings = rcv_scriptSettings;
-            })(sampleRHTMLVisual3AE23BF6D2F64FC8B1ACABEBAD0FAE26 = visual.sampleRHTMLVisual3AE23BF6D2F64FC8B1ACABEBAD0FAE26 || (visual.sampleRHTMLVisual3AE23BF6D2F64FC8B1ACABEBAD0FAE26 = {}));
+                arcDiagram3AE23BF6D2F64FC8B1ACABEBAD0FAE26.rcv_scriptSettings = rcv_scriptSettings;
+            })(arcDiagram3AE23BF6D2F64FC8B1ACABEBAD0FAE26 = visual.arcDiagram3AE23BF6D2F64FC8B1ACABEBAD0FAE26 || (visual.arcDiagram3AE23BF6D2F64FC8B1ACABEBAD0FAE26 = {}));
         })(visual = extensibility.visual || (extensibility.visual = {}));
     })(extensibility = powerbi.extensibility || (powerbi.extensibility = {}));
 })(powerbi || (powerbi = {}));
@@ -643,8 +643,8 @@ var powerbi;
     (function (extensibility) {
         var visual;
         (function (visual) {
-            var sampleRHTMLVisual3AE23BF6D2F64FC8B1ACABEBAD0FAE26;
-            (function (sampleRHTMLVisual3AE23BF6D2F64FC8B1ACABEBAD0FAE26) {
+            var arcDiagram3AE23BF6D2F64FC8B1ACABEBAD0FAE26;
+            (function (arcDiagram3AE23BF6D2F64FC8B1ACABEBAD0FAE26) {
                 "use strict";
                 // below is a snippet of a definition for an object which will contain the property values
                 // selected by the users
@@ -684,8 +684,12 @@ var powerbi;
                         this.bodyNodes = [];
                         //RVIZ_IN_PBI_GUIDE:BEGIN:Added to create HTML-based 
                         this.settings_cols = {
-                            min: "grey",
-                            max: "orange"
+                            numCols: "5",
+                            col1: "#c7e9b4",
+                            col2: "#7fcdbb",
+                            col3: "#41b6c4",
+                            col4: "#2c7fb8",
+                            col5: "#253494"
                         };
                         //RVIZ_IN_PBI_GUIDE:END:Added to create HTML-based 
                     }
@@ -723,7 +727,7 @@ var powerbi;
                         // inject HTML from payload, created in R
                         // the code is injected to the 'head' and 'body' sections.
                         // if the visual was already rendered, the previous DOM elements are cleared
-                        sampleRHTMLVisual3AE23BF6D2F64FC8B1ACABEBAD0FAE26.ResetInjector();
+                        arcDiagram3AE23BF6D2F64FC8B1ACABEBAD0FAE26.ResetInjector();
                         if (!payloadBase64) {
                             return;
                         }
@@ -745,7 +749,7 @@ var powerbi;
                             var headList = el.getElementsByTagName("head");
                             if (headList && headList.length > 0) {
                                 var head = headList[0];
-                                this.headNodes = sampleRHTMLVisual3AE23BF6D2F64FC8B1ACABEBAD0FAE26.ParseElement(head, document.head);
+                                this.headNodes = arcDiagram3AE23BF6D2F64FC8B1ACABEBAD0FAE26.ParseElement(head, document.head);
                             }
                         }
                         // update 'body' nodes, under the rootElement
@@ -756,12 +760,12 @@ var powerbi;
                         var bodyList = el.getElementsByTagName("body");
                         if (bodyList && bodyList.length > 0) {
                             var body = bodyList[0];
-                            this.bodyNodes = sampleRHTMLVisual3AE23BF6D2F64FC8B1ACABEBAD0FAE26.ParseElement(body, this.rootElement);
+                            this.bodyNodes = arcDiagram3AE23BF6D2F64FC8B1ACABEBAD0FAE26.ParseElement(body, this.rootElement);
                         }
-                        sampleRHTMLVisual3AE23BF6D2F64FC8B1ACABEBAD0FAE26.RunHTMLWidgetRenderer();
+                        arcDiagram3AE23BF6D2F64FC8B1ACABEBAD0FAE26.RunHTMLWidgetRenderer();
                     };
                     Visual.parseSettings = function (dataView) {
-                        return sampleRHTMLVisual3AE23BF6D2F64FC8B1ACABEBAD0FAE26.VisualSettings.parse(dataView);
+                        return arcDiagram3AE23BF6D2F64FC8B1ACABEBAD0FAE26.VisualSettings.parse(dataView);
                     };
                     //RVIZ_IN_PBI_GUIDE:BEGIN:Added to create HTML-based 
                     /**
@@ -774,8 +778,12 @@ var powerbi;
                      */
                     Visual.prototype.updateObjects = function (objects) {
                         this.settings_cols = {
-                            min: DataViewObjectsModule.getValue(objects, 'min', this.settings_cols.min),
-                            max: DataViewObjectsModule.getValue(objects, 'max', this.settings_cols.max)
+                            numCols: DataViewObjectsModule.getValue(objects, 'numCols', this.settings_cols.numCols),
+                            col1: DataViewObjectsModule.getValue(objects, 'col1', this.settings_cols.col1),
+                            col2: DataViewObjectsModule.getValue(objects, 'col2', this.settings_cols.col2),
+                            col3: DataViewObjectsModule.getValue(objects, 'col3', this.settings_cols.col3),
+                            col4: DataViewObjectsModule.getValue(objects, 'col4', this.settings_cols.col4),
+                            col5: DataViewObjectsModule.getValue(objects, 'col5', this.settings_cols.col5)
                         };
                     };
                     //RVIZ_IN_PBI_GUIDE:END:Added to create HTML-based 
@@ -793,8 +801,12 @@ var powerbi;
                                 objectEnumeration.push({
                                     objectName: objectName,
                                     properties: {
-                                        min: this.settings_cols.min,
-                                        max: this.settings_cols.max
+                                        numCols: this.settings_cols.numCols,
+                                        col1: this.settings_cols.col1,
+                                        col2: this.settings_cols.col2,
+                                        col3: this.settings_cols.col3,
+                                        col4: this.settings_cols.col4,
+                                        col5: this.settings_cols.col5
                                     },
                                     selector: null
                                 });
@@ -806,8 +818,8 @@ var powerbi;
                     };
                     return Visual;
                 }());
-                sampleRHTMLVisual3AE23BF6D2F64FC8B1ACABEBAD0FAE26.Visual = Visual;
-            })(sampleRHTMLVisual3AE23BF6D2F64FC8B1ACABEBAD0FAE26 = visual.sampleRHTMLVisual3AE23BF6D2F64FC8B1ACABEBAD0FAE26 || (visual.sampleRHTMLVisual3AE23BF6D2F64FC8B1ACABEBAD0FAE26 = {}));
+                arcDiagram3AE23BF6D2F64FC8B1ACABEBAD0FAE26.Visual = Visual;
+            })(arcDiagram3AE23BF6D2F64FC8B1ACABEBAD0FAE26 = visual.arcDiagram3AE23BF6D2F64FC8B1ACABEBAD0FAE26 || (visual.arcDiagram3AE23BF6D2F64FC8B1ACABEBAD0FAE26 = {}));
         })(visual = extensibility.visual || (extensibility.visual = {}));
     })(extensibility = powerbi.extensibility || (powerbi.extensibility = {}));
 })(powerbi || (powerbi = {}));
@@ -817,13 +829,13 @@ var powerbi;
     (function (visuals) {
         var plugins;
         (function (plugins) {
-            plugins.sampleRHTMLVisual3AE23BF6D2F64FC8B1ACABEBAD0FAE26 = {
-                name: 'sampleRHTMLVisual3AE23BF6D2F64FC8B1ACABEBAD0FAE26',
-                displayName: 'sampleRHTMLVisual',
+            plugins.arcDiagram3AE23BF6D2F64FC8B1ACABEBAD0FAE26 = {
+                name: 'arcDiagram3AE23BF6D2F64FC8B1ACABEBAD0FAE26',
+                displayName: 'arcDiagram',
                 class: 'Visual',
                 version: '1.0.0',
                 apiVersion: '1.13.0',
-                create: function (options) { return new powerbi.extensibility.visual.sampleRHTMLVisual3AE23BF6D2F64FC8B1ACABEBAD0FAE26.Visual(options); },
+                create: function (options) { return new powerbi.extensibility.visual.arcDiagram3AE23BF6D2F64FC8B1ACABEBAD0FAE26.Visual(options); },
                 custom: true
             };
         })(plugins = visuals.plugins || (visuals.plugins = {}));

@@ -24,7 +24,7 @@
  *  THE SOFTWARE.
  */
 
-module powerbi.extensibility.visual.sampleRHTMLVisual3AE23BF6D2F64FC8B1ACABEBAD0FAE26  {
+module powerbi.extensibility.visual.arcDiagram3AE23BF6D2F64FC8B1ACABEBAD0FAE26  {
     "use strict";
 
     import DataViewObjectsParser = powerbi.extensibility.utils.dataview.DataViewObjectsParser;
