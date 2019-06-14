@@ -1,1 +1,13 @@
-.visual-arcDiagram3AE23BF6D2F64FC8B1ACABEBAD0FAE26 .rcv_autoScaleImageContainer{position:relative}.visual-arcDiagram3AE23BF6D2F64FC8B1ACABEBAD0FAE26 .rcv_autoScaleImageContainer .rcv_autoScaleImage{max-width:100%;max-height:100%;position:absolute;top:50%;left:50%;transform:translateY(-50%) translateX(-50%);-webkit-transform:translateY(-50%) translateX(-50%)}
+.rcv_autoScaleImageContainer {
+  position: relative;
+}
+.rcv_autoScaleImageContainer .rcv_autoScaleImage {
+  max-width: 100%;
+  max-height: 100%;
+  position: absolute;
+  top: 50%;
+  
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  -webkit-transform: translateY(-50%) translateX(-50%);
+}

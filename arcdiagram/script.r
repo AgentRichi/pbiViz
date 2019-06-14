@@ -161,7 +161,7 @@ arcDiagram <- function(
                    hoverinfo = "text",
                    text = txt,
                    line = list(color = color, shape = "spline", width = width),
-                   mode = "lines",
+                   mode = "lines+markers",
                    name = txt, 
                    type = "scatter")
   }
